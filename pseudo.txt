@@ -1,0 +1,13 @@
+
+
+DB Schema:
+    Room/Queue Num:
+        x2 Playernum:
+            name:
+            wins:
+            choice:
+        turn:
+        chat:
+            player:
+                msg:
+                
