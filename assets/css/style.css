@@ -13,3 +13,6 @@ h1{
 .chat-message{
     line-height: 1;
 }
+.display{
+    display: none;
+}
