@@ -14,7 +14,11 @@
 
 <body>
   <div class="container">
-
+    <div class="row">
+      <div class="col-12 jumbotron">
+        <h1 id="page-title">The Massively Online Multiplayer Rock Paper Scissor's Game</h1>
+      </div>
+    </div>
     <div class="row">
       <div class="col-8 offset-2">
         <form class="registration">
@@ -34,29 +38,31 @@
           <div class="col-3 player-1">
             <h2 class="name-1"></h2>
             <div class="choices display">
-              <button class="btn btn-primary btn-block rock" data-id="rock"></button>
-              <button class="btn btn-primary btn-block paper" data-id="paper"></button>
-              <button class="btn btn-primary btn-block scissors" data-id="scissors"></button>
+              <button class="btn btn-primary btn-block rock" data-id="rock">Rock</button>
+              <button class="btn btn-primary btn-block paper" data-id="paper">Paper</button>
+              <button class="btn btn-primary btn-block scissors" data-id="scissors">Scissors</button>
             </div>
+            <h3 class="player-1-wins"></h3>
           </div>
           <div class="col-6 winner">
             <h2 class="turn"></h2>
-            <h2 class="win">Win!</h2>
+            <h2 class="win">Waiting for connections...</h2>
           </div>
           <div class="col-3 player-2">
             <h2 class="name-2"></h2>
             <div class="choices display">
-              <button class="btn btn-primary btn-block rock" data-id="rock"></button>
-              <button class="btn btn-primary btn-block paper" data-id="paper"></button>
-              <button class="btn btn-primary btn-block scissors" data-id="scissors"></button>
+              <button class="btn btn-primary btn-block rock" data-id="rock">Rock</button>
+              <button class="btn btn-primary btn-block paper" data-id="paper">Paper</button>
+              <button class="btn btn-primary btn-block scissors" data-id="scissors">Scissors</button>              
             </div>
+            <h3 class="player-2-wins"></h3>
           </div>
         </div>
 
       </div>
     </div>
     <div class="row chat">
-      <div class="col-8 offset-2">
+      <div class="col-12">
         <div class="chatbox border border-secondary">
 
         </div>
@@ -72,11 +78,11 @@
         </form>
       </div>
     </div>
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-8 offset-2">
         <button class="clear">ClearDB</button>
       </div>
-    </div>
+    </div> -->
   </div>
 
 
