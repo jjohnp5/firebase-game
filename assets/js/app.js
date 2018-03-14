@@ -1,3 +1,6 @@
+$(document).ready(function(){
+
+
 let db = firebase.database();
 
 let name = "";
@@ -39,7 +42,7 @@ function resetWins(roomId, player, wins){
 let winDisplay = $('.win');
 
 function gameState(){
-    firebase.database().ref('/game').once('value').then(function(d){
+    db.ref('/game').once('value').then(function(d){
 
         console.log(d.val())
 
@@ -53,7 +56,7 @@ function gameState(){
                 gameReady = true;
                 $('.registration').remove();
                 $(`.player-${player} .choices`).removeClass("display");
-                var chats = firebase.database().ref(`/game/${roomNumber}/chat`);
+                var chats = db.ref(`/game/${roomNumber}/chat`);
                     chats.on('child_added', function(chat){
                         $('.chatbox').append($('<p class="chat-message">').text(`${chat.val().name}: ${chat.val().message}`))
                 });
@@ -71,7 +74,7 @@ function gameState(){
                         gameReady = true;
                         $('.registration').remove();
                         $(`.player-${player} .choices`).removeClass("display");
-                        var chats = firebase.database().ref(`/game/${roomNumber}/chat`);
+                        var chats = db.ref(`/game/${roomNumber}/chat`);
                             chats.on('child_added', function(chat){
                                 $('.chatbox').append($('<p class="chat-message">').text(`${chat.val().name}: ${chat.val().message}`))
                         });
@@ -87,7 +90,7 @@ function gameState(){
                         gameReady = true;
                         $('.registration').remove();
                         $(`.player-${player} .choices`).removeClass("display");
-                        var chats = firebase.database().ref(`/game/${roomNumber}/chat`);
+                        var chats = db.ref(`/game/${roomNumber}/chat`);
                             chats.on('child_added', function(chat){
                                 $('.chatbox').append($('<p class="chat-message">').text(`${chat.val().name}: ${chat.val().message}`))
                         });
@@ -103,7 +106,7 @@ function gameState(){
                         gameReady = true;
                         $('.registration').remove();
                         $(`.player-${player} .choices`).removeClass("display");
-                        var chats = firebase.database().ref(`/game/${roomNumber}/chat`);
+                        var chats = db.ref(`/game/${roomNumber}/chat`);
                             chats.on('child_added', function(chat){
                                 $('.chatbox').append($('<p class="chat-message">').text(`${chat.val().name}: ${chat.val().message}`))
                         });
@@ -122,7 +125,7 @@ function gameState(){
                         gameReady = true;
                         $('.registration').remove();
                         $(`.player-${player} .choices`).removeClass("display");
-                        var chats = firebase.database().ref(`/game/${roomNumber}/chat`);
+                        var chats = db.ref(`/game/${roomNumber}/chat`);
                             chats.on('child_added', function(chat){
                                 $('.chatbox').append($('<p class="chat-message">').text(`${chat.val().name}: ${chat.val().message}`))
                         });
@@ -133,7 +136,7 @@ function gameState(){
 
             }
         }
-            firebase.database().ref(`/game/${roomNumber}`).on('value', function(d){
+            db.ref(`/game/${roomNumber}`).on('value', function(d){
                 if(d.val()[enemy].hasOwnProperty("name")){
                     setName(enemy, d.val()[enemy].name)
                 }
@@ -198,7 +201,7 @@ function gameState(){
                 
             
             });
-            firebase.database().ref(`/game/${roomNumber}`).on('value', function(d){
+            db.ref(`/game/${roomNumber}`).on('value', function(d){
                 $('.player-1').removeClass("border");
                 $('.player-2').removeClass("border");
                 if(d.val().turn === 0){
@@ -219,13 +222,14 @@ function gameState(){
                 }
             });
 
-            firebase.database().ref(`/game/${roomNumber}/disconnected`).onDisconnect().set(`${name} disconnected`)
-            firebase.database().ref(`/game/${roomNumber}/${player}`).onDisconnect().set(null);
-            firebase.database().ref(`/game/${roomNumber}/disconnected`).on('value', function(d){
+            db.ref(`/game/${roomNumber}/disconnected`).onDisconnect().set(`${name} disconnected`)
+            db.ref(`/game/${roomNumber}/${player}`).onDisconnect().set(null);
+            db.ref(`/game/${roomNumber}/disconnected`).on('value', function(d){
                 $('.chatbox').append($('<p class="chat-message">').text(d.val()));
                 winDisplay.text('Waiting for connection...');
 
             })
+            db.ref(`/game/${roomNumber}/chat`).onDisconnect().set(null);
 
             
         
@@ -263,7 +267,7 @@ $('button[type="submit"]').on('click', (e)=>{
 
 $('.send').on('click', function(e){
     e.preventDefault();
-    const updateChat = firebase.database().ref(`/game/${roomNumber}/chat`);
+    const updateChat = db.ref(`/game/${roomNumber}/chat`);
     var push = updateChat.push();
     push.set({name: name, message: $('.message').val()});
     $('.message').val("");
@@ -276,3 +280,4 @@ function clearGame(){
     db.ref('/game').set("");
 }
 
+})
