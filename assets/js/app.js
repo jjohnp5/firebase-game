@@ -126,10 +126,9 @@ $(document).ready(function () {
                     setTurn(roomNumber, 1);
                     // winDisplay.text(`${d.val()[enemy].name} joined the room..`);
                 }
-                $(`.player-${player}-wins`).text(`Wins: ${d.val()[player].wins}`);
                 if (enemySet) {
                     $(`.player-${enemy}-wins`).text(`Wins: ${d.val()[enemy].wins}`);
-
+                    $(`.player-${player}-wins`).text(`Wins: ${d.val()[player].wins}`);
                     switch (d.val()[enemy].choice) {
                         case "rock":
                             if (d.val()[player].choice === "rock") {
@@ -278,8 +277,6 @@ $(document).ready(function () {
     })
 
 
-    function clearGame() {
-        db.ref('/game').set("");
-    }
+
 
 })
