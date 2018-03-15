@@ -67,27 +67,22 @@ $(document).ready(function () {
                             roomNumber = i;
                             player = 2;
                             enemy = 1;
+                            playerSet = true;
+
 
                         } else if (!d.val()[i].hasOwnProperty('1') && d.val()[i].hasOwnProperty('2') && !playerSet) {
                             roomNumber = i;
                             player = 1;
                             enemy = 2;
-
+                            playerSet = true;
                         } else if (!d.val()[i].hasOwnProperty('1') && !d.val()[i].hasOwnProperty('2') && !playerSet) {
                             roomNumber = i;
                             player = 1;
                             enemy = 2;
+                            playerSet = true;
 
                         }
-                        writeUser(roomNumber, name, player, wins);
-                        gameReady = true;
-                        $('.registration').remove();
-                        $(`.player-${player} .choices`).removeClass("display");
-
-                        setName(player, name);
                         
-                        playerSet = true;
-                        winDisplay.text('Ready to play!');
                         
                         
                     }
@@ -95,15 +90,24 @@ $(document).ready(function () {
                         roomNumber = d.val().length;
                         player = 1;
                         enemy = 2;
-                        writeUser(roomNumber, name, player, wins);
-                        gameReady = true;
-                        $('.registration').remove();
-                        $(`.player-${player} .choices`).removeClass("display");
+                        // writeUser(roomNumber, name, player, wins);
+                        // gameReady = true;
+                        // $('.registration').remove();
+                        // $(`.player-${player} .choices`).removeClass("display");
 
-                        setName(player, name);
+                        // setName(player, name);
                         playerSet = true;
-                        console.log('2 players currently playing');
+                       
                     }
+                    writeUser(roomNumber, name, player, wins);
+                    gameReady = true;
+                    $('.registration').remove();
+                    $(`.player-${player} .choices`).removeClass("display");
+
+                    setName(player, name);
+                    
+                    
+                    winDisplay.text('Ready to play!');
                     
 
                 }
