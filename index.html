@@ -25,54 +25,59 @@
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name">
-            <label for="email">Email</label>
-            <input type="text" class="form-control" id="email">
           </div>
           <button class="btn btn-success" type="submit">Submit</button>
         </form>
       </div>
     </div>
     <div class="row">
+        <div class="col-12 winner">
+            <h2 class="turn"></h2>
+            <h2 class="win">Waiting for connections...</h2>
+          </div>
+    </div>
+    <div class="row">
       <div class="col-12">
         <div class="row">
-          <div class="col-3 player-1">
+          <div class="col-sm-3 player-1">
             <h2 class="name-1"></h2>
             <div class="choices display">
               <button class="btn btn-primary btn-block rock" data-id="rock">Rock</button>
               <button class="btn btn-primary btn-block paper" data-id="paper">Paper</button>
               <button class="btn btn-primary btn-block scissors" data-id="scissors">Scissors</button>
             </div>
-            <h3 class="player-1-wins"></h3>
+            <h5 class="player-1-wins"></h5>
           </div>
-          <div class="col-6 winner">
-            <h2 class="turn"></h2>
-            <h2 class="win">Waiting for connections...</h2>
-          </div>
-          <div class="col-3 player-2">
+          <div class="col-sm-6"></div>
+          <div class="col-sm-3 player-2">
             <h2 class="name-2"></h2>
             <div class="choices display">
               <button class="btn btn-primary btn-block rock" data-id="rock">Rock</button>
               <button class="btn btn-primary btn-block paper" data-id="paper">Paper</button>
               <button class="btn btn-primary btn-block scissors" data-id="scissors">Scissors</button>              
             </div>
-            <h3 class="player-2-wins"></h3>
+            <h5 class="player-2-wins"></h5>
           </div>
         </div>
 
       </div>
     </div>
-    <div class="row chat">
+    <div class="row chat display">
       <div class="col-12">
         <div class="chatbox border border-secondary">
 
         </div>
         <form>
-          <div class="row">
-            <div class="col-9">
-              <input type="text" class="form-control message">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control message" aria-label="chat message">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-dark send" >Send</button>
+                </div>
+              </div>
+              <!-- <input type="text" class="form-control message">
             </div>
             <div class="col-2">
-              <button class="send btn btn-success">Send</button>
+              <button class="send btn btn-success">Send</button> -->
             </div>
           </div>
         </form>
